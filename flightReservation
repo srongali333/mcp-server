@@ -1,0 +1,108 @@
+#%RAML 1.0
+title: Flight Booking Reservation API
+version: 1.0
+baseUri: https://api.example.com/flight-reservation
+mediaType: application/json
+
+types:
+  Flight:
+    type: object
+    properties:
+      id: integer
+      flightNumber: string
+      departure: string
+      destination: string
+      departureTime: datetime
+      arrivalTime: datetime
+      price: number
+  Passenger:
+    type: object
+    properties:
+      id: integer
+      name: string
+      email: string
+      phone: string
+  Booking:
+    type: object
+    properties:
+      id: integer
+      flightId: integer
+      passengerId: integer
+      bookingDate: datetime
+
+/flight:
+  get:
+    description: Retrieve a list of all available flights.
+    responses:
+      200:
+        body:
+          application/json:
+            type: Flight[]
+  post:
+    description: Add a new flight.
+    body:
+      application/json:
+        type: Flight
+    responses:
+      201:
+        description: Flight created successfully.
+
+/flight/{id}:
+  uriParameters:
+    id:
+      type: integer
+      description: Unique identifier for the flight.
+  get:
+    description: Retrieve details of a specific flight.
+    responses:
+      200:
+        body:
+          application/json:
+            type: Flight
+  put:
+    description: Update details of a specific flight.
+    body:
+      application/json:
+        type: Flight
+    responses:
+      200:
+        description: Flight updated successfully.
+  delete:
+    description: Delete a specific flight.
+    responses:
+      204:
+        description: Flight deleted successfully.
+
+/passenger:
+  get:
+    description: Retrieve a list of all passengers.
+    responses:
+      200:
+        body:
+          application/json:
+            type: Passenger[]
+  post:
+    description: Add a new passenger.
+    body:
+      application/json:
+        type: Passenger
+    responses:
+      201:
+        description: Passenger created successfully.
+
+/booking:
+  get:
+    description: Retrieve a list of all bookings.
+    responses:
+      200:
+        body:
+          application/json:
+            type: Booking[]
+  post:
+    description: Create a new booking.
+    body:
+      application/json:
+        type: Booking
+    responses:
+      201:
+        description: Booking created successfully.
