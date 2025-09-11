@@ -1,0 +1,82 @@
+```json
+{
+  "info": {
+    "name": "Order Information API",
+    "description": "This API provides information related to orders for customers.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "2c3662c-04c6-480f-a8d0-4e6fc659f84f",
+    "version": "1.0.0"
+  },
+  "item": [
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "client_id",
+                "value": "897348hefej9847r9847",
+                "type": "text"
+              },
+              {
+                "key": "client_secret",
+                "value": "dkfjkdahs87894784nvsb",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"orderId\":\"ORD01\",\"customerId\":\"CUST001\",\"status\":\"pending\",\"productName\":\"Mouse\"}"
+            },
+            "url": {
+              "raw": "{{base_url}}/orders",
+              "host": ["{{base_url}}"],
+              "path": ["orders"]
+            }
+          },
+          "response": [
+            {
+              "code": 201,
+              "body": "{\"status\": \"order created successfully\", \"orderId\": \"ORD01\"}",
+              "description": "Order created successfully"
+            }
+          ]
+        },
+        {
+          "name": "Get Orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "client_id",
+                "value": "897348hefej9847r9847",
+                "type": "text"
+              },
+              {
+                "key": "client_secret",
+                "value": "dkfjkdahs87894784nvsb",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/getOrders",
+              "host": ["{{base_url}}"],
+              "path": ["getOrders"]
+            }
+          },
+          "response": [
+            {
+              "code": 200,
+              "body": "[{\"orderId\":\"ORD01\",\"customerId\":\"CUST001\",\"status\":\"pending\",\"productName\":\"Mouse\"},{\"orderId\":\"ORD02\",\"customerId\":\"CUST002\",\"status\":\"delivered\",\"productName\":\"key-board\"}]",
+              "description": "Retrieved specific orders successfully"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
